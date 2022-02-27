@@ -1,6 +1,7 @@
 ## Гайд по DDoS сайтів окупантів
 
-### Запуск через докер (потрібен попередньо встановлений докер)
+### Запуск через докер (потрібен попередньо встановлений докер і docker-compose)
+Інструкція як встановити докер [тут](/docs/docker_installation.md)
 1) `git clone https://github.com/abionics/attacker`
 2) `cd attacker`
 3) `docker-compose up --build -d`
