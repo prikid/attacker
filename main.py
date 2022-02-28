@@ -19,7 +19,7 @@ TIMEOUT = ClientTimeout(
 CUSTOM_PROXY = None  # can be like 'http://login:username@1.2.3.4:5678' OR 'http://1.2.3.4:5678'
 CUSTOM_PROXIES_FILE = None  # name of file with list of proxies, each one in separate line
 REQUESTS_PER_SITE = 50
-PARALLEL_COUNT = 1000
+PARALLEL_COUNT = 300
 SHOW_REQUEST_EXCEPTIONS = True
 FORCE_HTTPS = True
 
