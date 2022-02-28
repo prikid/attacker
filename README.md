@@ -4,8 +4,8 @@
 Інструкція як встановити докер [тут](/docs/docker_installation.md)
 1) `git clone https://github.com/abionics/attacker`
 2) `cd attacker`
-3) `docker-compose up --build -d`
-4) "Щоб призупинити зашквар і трохи провітрити хату" `docker-compose down`
+3) `./start.sh`
+4) "Щоб призупинити зашквар і трохи провітрити хату" `./stop.sh`
 
 Корегуйте параметри `REQUESTS_PER_SITE` та `PARALLEL_COUNT` для зміни швидкості.
 За замовчуванням використовуються проксі (див. [з api](http://46.4.63.238/api.php)).

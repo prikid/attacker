@@ -21,6 +21,7 @@ CUSTOM_PROXIES_FILE = None  # name of file with list of proxies, each one in sep
 REQUESTS_PER_SITE = 50
 PARALLEL_COUNT = 20
 SHOW_REQUEST_EXCEPTIONS = False
+FORCE_HTTPS = True
 
 
 def main():
@@ -39,7 +40,7 @@ async def start_one():
             content = requests.get(host).content
             data = json.loads(content)
             url = data['site']['url']
-            url = _fix_url(url)
+            url = _fix_url(url, force_https=FORCE_HTTPS)
             async with CloudflareScraper(timeout=TIMEOUT, trust_env=True) as session:
                 success = await attempt(session, url)
                 if not success:
@@ -67,8 +68,12 @@ def _load_proxies(filename: str) -> list:
         return file.read().splitlines()
 
 
-def _fix_url(url: str) -> str:
-    return url if url.startswith('http') else 'http://' + url
+def _fix_url(url: str, force_https: bool = False) -> str:
+    if not url.startswith('http'):
+        'http://' + url
+    if force_https:
+        url = url.replace('http://', 'https://')
+    return url
 
 
 async def attempt(session: CloudflareScraper, url: str, proxy: str = None) -> bool:
